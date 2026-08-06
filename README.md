@@ -22,8 +22,6 @@ A modern, responsive coffee shop website built using **Semantic HTML5** and **Mo
 
 - HTML5
 - CSS3
-- Flexbox
-- CSS Grid
 - Responsive Web Design
 
 ---
@@ -71,7 +69,6 @@ This project demonstrates:
 
 - Semantic HTML structure
 - Responsive layouts
-- CSS Grid & Flexbox
 - Navigation design
 - Contact form creation
 - Modern UI/UX principles
