@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artisan Brew Coffee House</title>
+  <style>
+    /* --------------------------------------------------
+       1. GLOBAL STYLES & CSS RESET
+       -------------------------------------------------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth; /* Smooth scrolling for nav links */
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: #332d2b;
+      background-color: #fdfbf7;
+    }
+
+    /* Standardized Section Styling */
+    section {
+      padding: 5rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.25rem;
+      color: #2c1a1d;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #7a6b65;
+      margin-bottom: 3rem;
+      font-size: 1.1rem;
+    }
+
+    /* Shared Button Component */
+    .btn {
+      display: inline-block;
+      background-color: #d4a373;
+      color: #2c1a1d;
+      padding: 0.8rem 1.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background-color: #faedcd;
+      transform: translateY(-2px);
+    }
+
+    /* --------------------------------------------------
+       SECTION 1: NAVIGATION BAR
+       -------------------------------------------------- */
+    header {
+      background-color: #2c1a1d;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #d4a373;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    .nav-links a {
+      color: #f4f4f4;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #d4a373;
+    }
+
+    /* --------------------------------------------------
+       SECTION 2: HERO SECTION
+       -------------------------------------------------- */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), 
+                  url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+      height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #ffffff;
+      padding: 0 1.5rem;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    .hero h1 {
+      font-size: 3.25rem;
+      margin-bottom: 1rem;
+      color: #faedcd;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      max-width: 650px;
+      margin-bottom: 2rem;
+    }
+
+    /* --------------------------------------------------
+       SECTION 3: ABOUT US
+       -------------------------------------------------- */
+    .about-content {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      background: #ffffff;
+      padding: 2.5rem;
+      border-radius: 8px;
+      border: 1px solid #eee7de;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .about-content p {
+      font-size: 1.1rem;
+      color: #4a423f;
+      margin-bottom: 1.2rem;
+    }
+
+    .about-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* --------------------------------------------------
+       SECTION 4: SERVICES / MENU
+       -------------------------------------------------- */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .service-card {
+      background-color: #ffffff;
+      padding: 2.5rem 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #eee7de;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+      transition: transform 0.2s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .service-icon {
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.3rem;
+      color: #2c1a1d;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card p {
+      color: #665e5b;
+      font-size: 0.95rem;
+    }
+
+    /* --------------------------------------------------
+       SECTION 5: CONTACT FORM & INFO
+       -------------------------------------------------- */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      background-color: #ffffff;
+      padding: 2.5rem;
+      border-radius: 8px;
+      border: 1px solid #eee7de;
+    }
+
+    .contact-info h3 {
+      color: #2c1a1d;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .contact-info p {
+      margin-bottom: 0.75rem;
+      color: #554d4a;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #2c1a1d;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 0.75rem;
+      border: 1px solid #ccc5b9;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: 2px solid #d4a373;
+      border-color: transparent;
+    }
+
+    /* --------------------------------------------------
+       SECTION 6: GALLERY (OPTIONAL SECTION)
+       -------------------------------------------------- */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid #eee7de;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* --------------------------------------------------
+       SECTION 7: FOOTER
+       -------------------------------------------------- */
+    footer {
+      background-color: #2c1a1d;
+      color: #dcd3ce;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      border-top: 4px solid #d4a373;
+    }
+
+    footer p {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================================================
+       1. NAVIGATION BAR
+       ================================================== -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">☕ Artisan Brew</a>
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================================================
+         2. HERO SECTION
+         ================================================== -->
+    <section id="hero" class="hero">
+      <h1>Handcrafted Coffee, Honest Ingredients</h1>
+      <p>Direct-trade organic beans roasted in small batches for exceptional clarity and flavor.</p>
+      <a href="#services" class="btn">View Specialties</a>
+    </section>
+
+    <!-- ==================================================
+         3. ABOUT SECTION
+         ================================================== -->
+    <section id="about">
+      <h2 class="section-title">Our Story</h2>
+      <p class="section-subtitle">A passion for pure coffee craftsmanship</p>
+      <div class="about-content">
+        <p>
+          Founded in 2018, Artisan Brew was created to bring high-grade single-origin coffees directly from small family farms to our local community.
+        </p>
+        <p>
+          We source strictly 100% Arabica beans from high-altitude estates in Colombia, Ethiopia, and Guatemala, ensuring transparent pricing for growers and world-class coffee for your daily ritual.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================================================
+         4. SERVICES SECTION
+         ================================================== -->
+    <section id="services">
+      <h2 class="section-title">Our Specialties</h2>
+      <p class="section-subtitle">Carefully curated options for every coffee enthusiast</p>
+      <div class="services-grid">
+        
+        <article class="service-card">
+          <div class="service-icon">☕</div>
+          <h3>Specialty Espresso</h3>
+          <p>Double-shot traditional espressos, velvety lattes, and cortados pulled with precise pressure and timing.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">🫗</div>
+          <h3>Pour-Over Bar</h3>
+          <p>Single-origin coffees brewed to order using V60 and Chemex methods to highlight unique flavor notes.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon">🥐</div>
+          <h3>Artisan Pastries</h3>
+          <p>Butter croissants, scones, and sourdough treats baked daily using organic local flour.</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ==================================================
+         5. CONTACT SECTION
+         ================================================== -->
+    <section id="contact">
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-subtitle">Visit our shop or send us a message</p>
+      
+      <div class="contact-wrapper">
+        <!-- Contact Details -->
+        <div class="contact-info">
+          <h3>Location & Hours</h3>
+          <p>📍 <strong>Address:</strong> 123 Coffee Lane, Suite 100</p>
+          <p>📞 <strong>Phone:</strong> (555) 019-2834</p>
+          <p>✉️ <strong>Email:</strong> hello@artisanbrew.com</p>
+          <p>🕒 <strong>Hours:</strong> Mon - Sun: 6:00 AM - 7:00 PM</p>
+        </div>
+
+        <!-- HTML Native Contact Form -->
+        <form class="contact-form" action="#" method="post">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="yourname@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="How can we help you?" required></textarea>
+          </div>
+
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==================================================
+         6. GALLERY SECTION (OPTIONAL)
+         ================================================== -->
+    <section id="gallery">
+      <h2 class="section-title">Shop Gallery</h2>
+      <p class="section-subtitle">Inside our roasting laboratory and cafe</p>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=600&q=80" alt="Espresso Bar Setup">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=600&q=80" alt="Freshly Brewed Coffee Cup">
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&w=600&q=80" alt="Roasted Coffee Beans Close Up">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================================================
+       7. FOOTER SECTION
+       ================================================== -->
+  <footer>
+    <p>&copy; 2026 Artisan Brew Coffee House. All rights reserved.</p>
+    <p>Built purely with Semantic HTML5 &amp; Modern CSS3.</p>
+  </footer>
+
+</body>
+</html>
